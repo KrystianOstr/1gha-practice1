@@ -1,0 +1,36 @@
+name: deploy_on_push
+on: push
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+      - name: Run lint
+        run: npm run lint
+  test:
+    needs: lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+      - name: Run tests
+        run: npm run test
+  build:
+    needs: [lint, test]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the code
+        uses: actions/checkout@v4
+      - name: build
+        run: npm run build
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy
+        run: echo "Deploying..."
+      - name: Show context
+        run: 'echo "Actor: ${{ github.actor }}, Branch: ${{ github.ref_name }}"'
+      - name: Return success message
+        run: echo "Successfully finished"
