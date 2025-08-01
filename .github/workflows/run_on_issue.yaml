@@ -5,4 +5,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Issue description
-        run: 'echo "Action: ${{github.event.action}}, Title: ${{github.event.title}}, Name: ${{github.event.name.login}}"'
+        run: 'echo "Action: ${{github.event.action}}, Title: ${{github.event.issue.title}}, Name: ${{github.event.issue.user.login}}"'
