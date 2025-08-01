@@ -1,0 +1,8 @@
+name: Run on issue
+on: issues
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Issue description
+        run: 'echo "Action: ${{github.event.action}}, Title: ${{github.event.title}}, Name: ${{github.event.name.login}}"'
