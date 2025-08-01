@@ -20,5 +20,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: "Dzięki za zgłoszenie, @${user}! Zgłoszono o @${time}. Zajmiemy się tym!"
+              body: `Dzięki za zgłoszenie, @${user}! Zgłoszono o @${time}. Zajmiemy się tym!`
             })
